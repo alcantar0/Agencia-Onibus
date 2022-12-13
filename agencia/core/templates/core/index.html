@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Olá</title>
+</head>
+<body>
+	<form action="#">
+		<input type="button" value="Say Hello" onclick="sendRequest();" />
+		</form>
+	<div id="responseOutput">&nbsp;</div>
+<script type="text/javascript">
+	window.onload = function ()
+	{
+	document.getElementById("helloButton").onclick = sendRequest;
+	};
+	function createXHR()
+{
+try { return new XMLHttpRequest(); } catch(e) {}
+try { return new ActiveXObject("Msxml2.XMLHTTP.6.0"); } catch (e) {}
+try { return new ActiveXObject("Msxml2.XMLHTTP.3.0"); } catch (e) {}
+try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {}
+try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) {}
+alert("XMLHttpRequest not supported");
+return null;
+}
+function sendRequest()
+{
+var xhr = createXHR();
+// cross browser XHR creation
+if (xhr)
+{
+// use XHR
+}
+}
+xhr.open("GET","http://127.0.0.1:8000/api/cidades/",true);
+</script>
+</body>
+</html>
