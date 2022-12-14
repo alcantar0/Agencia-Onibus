@@ -1,40 +1,70 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Olá</title>
-</head>
-<body>
-	<form action="#">
-		<input type="button" value="Say Hello" onclick="sendRequest();" />
-		</form>
-	<div id="responseOutput">&nbsp;</div>
-<script type="text/javascript">
-	window.onload = function ()
-	{
-	document.getElementById("helloButton").onclick = sendRequest;
-	};
-	function createXHR()
-{
-try { return new XMLHttpRequest(); } catch(e) {}
-try { return new ActiveXObject("Msxml2.XMLHTTP.6.0"); } catch (e) {}
-try { return new ActiveXObject("Msxml2.XMLHTTP.3.0"); } catch (e) {}
-try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) {}
-try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) {}
-alert("XMLHttpRequest not supported");
-return null;
-}
-function sendRequest()
-{
-var xhr = createXHR();
-// cross browser XHR creation
-if (xhr)
-{
-// use XHR
-}
-}
-xhr.open("GET","http://127.0.0.1:8000/api/cidades/",true);
-</script>
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="images/MajorBus.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+
+    <title>MajorBus</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="images/MajorBus.png" alt="">
+        <h1 id="titulo">MajorBus</h1>
+      </div>
+      <a href="cadastrocliente.html"><button id="button-login">Cadastro Cliente</button></a>
+    </header>
+    
+    <div id="points-section">
+      <img src="images/Onibus.jpg" alt="">
+      <div class="text-info">
+        <h1>Linhas do Brasil</h1>
+        <p>A empresa MajorBus foi fundada no dia 3 de julho de 2022 para operar na região brasileira, com sede no Apartamento 209 Bloco1, Residencial Santiago, RUSSAS. O proprietario, empresário Guilherme"Major"Frutuoso.</p>
+        <a href="verlinhas.html"><input class="button-hover" type="button" value="Comprar Passagens ->"></a>
+      </div>
+    </div>
+
+    <div class="footer-box">
+      <div class="dados-style">
+        <div class="logo-footer">
+          <img src="images/MajorBus.png" alt="">
+          <h4>MajorBus</h4>
+        </div>
+        <p id="footer-desc">A melhor companhia de transportes da galaxia.</p>
+      </div>
+      <div class="dados-style">
+        <p><strong>Serviços</strong></p>
+        <p>InterMunicipal</p>
+        <p>InterEstadual</p>
+      </div>
+      <div class="dados-style">
+        <p><strong>Sobre nós</strong></p>
+        <p>Quem somos</p>
+        <p>Objetivos</p>
+        <p>Nossos pontos</p>
+      </div>
+    </div>
+
+    <div id="line"> </div>
+
+    <div class="footer-ending">
+      <div class="idioma">
+        <img src="#" alt="">
+        <p>Português (BR)</p>
+      </div>
+      <p>Termos e privacidade</p>
+      <p>Segurança</p>
+      <p>@2022 MajorBus</p>
+      <div class="social-media">
+        <img src="#" alt="">
+        <img src="#" alt="">
+        <img src="#" alt="">
+      </div>
+    </div>
+  </body>
 </html>
