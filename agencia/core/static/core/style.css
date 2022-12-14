@@ -1,0 +1,250 @@
+/*  ESTILOS GERAIS (INÍCIO) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 0;
+    overflow-x: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #ffffff;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+  }
+  
+  h1 {
+    font-size: 48pt;
+  }
+  
+  #titulo {
+    font-family: 'Secular One', sans-serif;
+  }
+  
+  h2 {
+    font-size: 30pt;
+  }
+  
+  h3 {
+    font-size: 24pt;
+  }
+  
+  h4 {
+    font-size: 20pt;
+  }
+  
+  p {
+    font-size: 1.3em;
+    max-width: 600px;
+  }
+  
+  .button-hover{
+    font-size: 18px;
+  }
+  
+  .button-hover:hover {
+    background-color: #d61a1a;
+    color: #fff;
+  } 
+  
+  /* ESTILOS GERAIS (FIM) */
+  /* ESTILO DO HEADER (INÍCIO) */
+  
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263ec4;
+    color: #fff;
+    width: 100vw;
+    padding: 10px 0;
+  }
+
+  header.button-hover{
+    padding: 1000px;
+  }
+  
+  header img {
+    width: 10vw;
+    height: 10vh;
+  }
+  
+  .logo {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .nav-box {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 14pt;
+  }
+
+  /* ESTILO PRIMEIRA SECTION (INÍCIO) */
+  
+  .intro-section {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 20px;
+    background-color: #263ec4;
+    color: #fff;
+    min-height: 700px;
+  }
+
+  .project-section {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 60px 20px;
+  }
+  
+  .project-section iframe {
+    margin-right: 30px;
+  }
+  
+  .text-info {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    padding: 0 50px 0 0;
+  }
+  
+  .text-info h2 {
+    margin-bottom: 20px;
+  }
+  
+  .text-info input {
+    background-color: #263ec4;
+    color: #f3f3f9;
+    padding: 15px 10px;
+    width: 400px;
+    border-color: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 50px;
+  }
+  
+  /* ESTILO QUARTA SECTION (INÍCIO) */
+  
+  #points-section {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 20px 0;
+    min-height: 700px;
+  }
+  
+  #points-section img{
+    max-width: 750px;
+  }
+  
+  /* ESTILO FOOTER SECTION (INÍCIO) */
+  
+  .footer-box {
+    background-color: #263ec4;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 40px 50px 30px;
+    align-items: center;
+    justify-content: space-between;
+    color: #f3f3f9;
+  }
+  
+  .idioma {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .dados-style {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+  }
+  
+  .dados-style p {
+    margin: 6px;
+  }
+  
+  .logo-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: baseline;
+  }
+  
+  .logo-footer img {
+    width: 10vw;
+    height: 10vh;
+  }
+  
+  .logo-footer h4 {
+    position: absolute;
+    left: 150px;
+  }
+  
+  #footer-desc {
+    padding-left: 40px;
+    max-width: 300px;
+  }
+  
+  #line {
+    width: 75vw;
+    position: relative;
+    height: 2px;
+    background-color: transparent;
+    bottom: 10px;
+  }
+  
+  .footer-ending {
+    color: #f3f3f9;
+    background-color: #263ec4;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 0 10px 75px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #button-login {
+    position: relative;
+    margin: 0 40px;
+    width: 120px;
+    height: 60px;
+    border-radius: 8px;
+    border: 0 none transparent;
+    background-color: #57e07e;
+    color: #f3f3f9;
+    cursor: pointer;
+    font-size: 16pt;
+  }
+
+  #button-login:hover{
+    background-color: #d61a1a;
+    color: #fff;
+
+  }
