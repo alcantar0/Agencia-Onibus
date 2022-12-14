@@ -17,8 +17,11 @@ class Bilhete(models.Model):
     num_iti = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = "bilhete"
+        constraints = [
+            models.UniqueConstraint(fields=["numeropoltrona", "num_iti"], name="poltrona-unica")
+        ]
 
 
 class Cidades(models.Model):

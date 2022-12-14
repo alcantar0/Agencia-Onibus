@@ -1,40 +1,43 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="{% static 'core/style2.css' %}">
     <title>Linhas MajorBus</title>
     
 </head>
 <body>
     <header>
-          <img src="images/MajorBus.png" alt="">
+        <img src="{% static 'core/images/MajorBus.png' %}" alt="">
         </div>
       </header>
 
     <div class="box">
-        <form action="">
+        <form method="POST">
+            {%csrf_token%}
             <fieldset>
-                <legend><b>VER LINHAS</b></legend>
+                <legend><b>VER ITINERARIOS</b></legend>
                 <br>
                 <div class="inputBox">
-                    <input type="text" name="nome" id="nome" class="inputUser" required>
+                    <input type="text" name="origem" id="nome" class="inputUser" required>
                     <label for="nome" class="labelInput">Saindo de</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="nome" id="nome" class="inputUser" required>
+                    <input type="text" name="destino" id="nome" class="inputUser" required>
                     <label for="nome" class="labelInput">Para</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="date" name="data" id="data" class="inputUser" required>
+                    <input type="time" name="hora" id="data" class="inputUser" required>
                 </div>
                 <br/>
                 <div class="botoes">
-                    <a href="index.html"><input id="submit2" type="button" value="Cancelar"></a>
+                    <a><input id="submit2" type="button" value="Cancelar"></a>
                     <input type="submit" name="submit" id="submit">
                 </div>
             </fieldset>

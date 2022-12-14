@@ -34,8 +34,101 @@ from core.models import (
 from rest_framework.response import Response
 from django.shortcuts import render, HttpResponse, redirect
 
+from django.views.generic import TemplateView, ListView
+from django.views.generic.edit import CreateView
+from django.db import IntegrityError
+
 def main(request):
     return render(request, 'core/index.html')
+
+
+class ClienteCadastro(TemplateView):
+
+    template_name = "core/cadastrocliente.html"
+
+    def post(self, request):
+        if request.POST:
+            nome = request.POST.get("nome")
+            email = request.POST.get("email")
+            cpf = request.POST.get("cpf")
+            genero = request.POST.get("genero")
+            cidade = request.POST.get("cidade")
+            endereco = request.POST.get("endereco")
+            Cliente.objects.create(cpf_c=cpf, nome=nome, rua=endereco, cidade=cidade, email=email, sexo=genero
+            )
+        return redirect("/main")
+
+class VerItinerarios(TemplateView):
+
+    template_name = "core/verlinhas.html"
+
+    def post(self, request):
+        if request.POST:
+            origem = request.POST.get("origem")
+            destino = request.POST.get("destino")
+            hora = request.POST.get("hora")
+            a=Itinerario.objects.filter(cep_origem=origem, cep_destino=destino, hora_saida=hora)
+            print(a)
+            cidade_origem = Cidades.objects.filter(cep=origem)
+            cidade_destino = Cidades.objects.filter(cep=destino)
+            cidade_destino = cidade_destino[0].nome_cidade
+            cidade_origem=cidade_origem[0].nome_cidade
+
+
+        return render(request, "core/display.html", {"itinerarios": a, "origem":cidade_origem, "destino": cidade_destino})
+
+class ComprarBilhete(CreateView):
+    template_name = 'core/comprar_bilhete.html'
+
+    def post(self, request):
+        if request.POST:
+            print(request.POST)
+            i = Itinerario.objects.filter(num_iti=request.POST['num_iti'])
+            valor = i[0].valor
+            print(valor)
+            import random
+            try:
+                Bilhete.objects.create(numerobilhete=random.randint(0,1000000000), numcomprovante=random.randint(0,1000000000), 
+                    cpf_c=request.POST['cpf'], numeropoltrona=request.POST['poltrona'], valor=valor, num_iti=request.POST['num_iti'])
+                return HttpResponse(f"<script>window.alert('Comprada')</script>")
+            except IntegrityError:
+                return HttpResponse(f"<script>window.alert('Poltrona não está livre, tente outra')</script>")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class BilheteViewSet(viewsets.ModelViewSet):
     serializer_class = BilheteSerializer

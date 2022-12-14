@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/style2.css' %}">
+    <title>Linhas MajorBus</title>
+    
+</head>
+<body>
+    <header>
+        <img src="{% static 'core/images/MajorBus.png' %}" alt="">
+        </div>
+      </header>
+
+    <div class="box">
+        <form method="POST" action="comprar/">
+            {%csrf_token%}
+            <fieldset>
+                <legend><b>Preencha os dados</b></legend>
+                <br>
+                <div class="inputBox">
+                    <input type="text" name="cpf" id="nome" class="inputUser" required>
+                    <label for="nome" class="labelInput">CPF</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="poltrona" id="nome" class="inputUser" required>
+                    <label for="nome" class="labelInput">Número Poltrona</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="num_iti" id="data" class="inputUser" required>
+                </div>
+                <br/>
+                <div class="botoes">
+                    <a><input id="submit2" type="button" value="Cancelar"></a>
+                    <input type="submit" name="submit" id="submit">
+                </div>
+            </fieldset>
+        </form>
+        <br>
+        <br>
+        <br>
+        {%block content %}
+	
+		{%for evento in itinerarios%}
+            Numero itinenário: {{evento.num_iti}} |
+			{{origem}} -> {{destino}}
+              <p>Valor: {{ evento.valor }}</p>
+            <br>
+            {%endfor%}
+		{% endblock content%}
+		</b>
+		<br>
+		</div>
+
+    </div>
+</body>
+</html>

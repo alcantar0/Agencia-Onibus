@@ -1,21 +1,24 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="{% static 'core/style2.css' %}">
     <title>Cadastro Clente MajorBus</title>
     
 </head>
 <body>
     <header>
-          <img src="images/MajorBus.png" alt="">
+        <img src="{% static 'core/images/MajorBus.png' %}" alt="">
         </div>
       </header>
 
     <div class="box">
-        <form action="">
+        <form method="POST">
+            {%csrf_token%}
             <fieldset>
                 <legend><b>Cadastro Cliente</b></legend>
                 <br>
@@ -34,10 +37,10 @@
                     <label for="cpf" class="labelInput">CPF</label>
                 </div>
                 <p>Sexo:</p>
-                <input type="radio" id="feminino" name="genero" value="feminino" required>
+                <input type="radio" id="feminino" name="genero" value="F" required>
                 <label for="feminino">Feminino</label>
                 <br>
-                <input type="radio" id="masculino" name="genero" value="masculino" required>
+                <input type="radio" id="masculino" name="genero" value="M" required>
                 <label for="masculino">Masculino</label>
                 <br>
                 <br>
@@ -52,7 +55,7 @@
                 </div>
                 <br>
                 <div class="botoes">
-                    <a href="index.html"><input id="submit2" type="button" value="Cancelar"></a>
+                    <a><input id="submit2" type="button" value="Cancelar"></a>
                     <input type="submit" name="submit" id="submit">
                 </div>
             </fieldset>
