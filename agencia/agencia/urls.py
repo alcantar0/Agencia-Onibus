@@ -66,7 +66,7 @@ urlpatterns = [
         SpectacularSwaggerSplitView.as_view(url_name="schema"),
         name="openapi",
     ),
-    path("main/", views.main),
+    path("", views.main),
     path('cliente/', views.ClienteCadastro.as_view()),
     path('itinerarios/', views.VerItinerarios.as_view()),
     path("itinerarios/comprar/", views.ComprarBilhete.as_view()),

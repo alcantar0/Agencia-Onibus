@@ -1,4 +1,5 @@
 from django.db import connection
+from django.contrib import messages #import messages
 
 import json
 from django.shortcuts import render
@@ -77,22 +78,27 @@ class VerItinerarios(TemplateView):
 
         return render(request, "core/display.html", {"itinerarios": a, "origem":cidade_origem, "destino": cidade_destino})
 
-class ComprarBilhete(CreateView):
+class ComprarBilhete(TemplateView):
     template_name = 'core/comprar_bilhete.html'
 
     def post(self, request):
         if request.POST:
-            print(request.POST)
             i = Itinerario.objects.filter(num_iti=request.POST['num_iti'])
             valor = i[0].valor
-            print(valor)
             import random
+            num_comprovante = random.randint(0,1000000000)
+            num_bilhete = random.randint(0,1000000000)
             try:
-                Bilhete.objects.create(numerobilhete=random.randint(0,1000000000), numcomprovante=random.randint(0,1000000000), 
+                Bilhete.objects.create(numerobilhete=num_bilhete, numcomprovante=num_comprovante, 
                     cpf_c=request.POST['cpf'], numeropoltrona=request.POST['poltrona'], valor=valor, num_iti=request.POST['num_iti'])
-                return HttpResponse(f"<script>window.alert('Comprada')</script>")
+                messages.success(request, "Comprada." )
+                comprov = Comprovante.objects.filter(numcomprovante=num_comprovante)
+                comprovante = {"numero": comprov[0].numcomprovante, "cpf": comprov[0].cpf_c, "valor":comprov[0].valor}
+                print(comprovante)
+                return render(request, 'core/index.html', comprovante)
             except IntegrityError:
-                return HttpResponse(f"<script>window.alert('Poltrona não está livre, tente outra')</script>")
+                messages.error(request, 'Poltrona não está livre, tente outra')
+                return render(request, 'core/index.html')
 
 
 
