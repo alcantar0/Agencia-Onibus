@@ -55,9 +55,14 @@ class ClienteCadastro(TemplateView):
             genero = request.POST.get("genero")
             cidade = request.POST.get("cidade")
             endereco = request.POST.get("endereco")
-            Cliente.objects.create(cpf_c=cpf, nome=nome, rua=endereco, cidade=cidade, email=email, sexo=genero
-            )
-        return redirect("/main")
+            try:
+                Cliente.objects.create(cpf_c=cpf, nome=nome, rua=endereco, cidade=cidade, email=email, sexo=genero
+                )
+                messages.success(request, "Cliente cadastrado!" )
+                return render(request, 'core/index.html')
+            except IntegrityError:
+                messages.error(request, 'Cliente já existe!')
+                return render(request, 'core/index.html')
 
 class VerItinerarios(TemplateView):
 
@@ -69,7 +74,6 @@ class VerItinerarios(TemplateView):
             destino = request.POST.get("destino")
             hora = request.POST.get("hora")
             a=Itinerario.objects.filter(cep_origem=origem, cep_destino=destino, hora_saida=hora)
-            print(a)
             cidade_origem = Cidades.objects.filter(cep=origem)
             cidade_destino = Cidades.objects.filter(cep=destino)
             cidade_destino = cidade_destino[0].nome_cidade
@@ -94,7 +98,6 @@ class ComprarBilhete(TemplateView):
                 messages.success(request, "Comprada." )
                 comprov = Comprovante.objects.filter(numcomprovante=num_comprovante)
                 comprovante = {"numero": comprov[0].numcomprovante, "cpf": comprov[0].cpf_c, "valor":comprov[0].valor}
-                print(comprovante)
                 return render(request, 'core/index.html', comprovante)
             except IntegrityError:
                 messages.error(request, 'Poltrona não está livre, tente outra')
